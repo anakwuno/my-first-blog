@@ -6,12 +6,12 @@ from django.utils import timezone
 
 
 class Buch(models.Model):
-    author = models.ForeignKey(Autoren, on_delete=models.CASCADE)
+    author = models.ForeignKey('Autoren', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     sprache = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    ausleiher = models.ForeignKey(Ausleiher, on_delete=models.CASCADE)
+    ausleiher = models.ForeignKey('Ausleiher', on_delete=models.CASCADE)
     def publish(self):
         self.published_date = timezone.now()
         self.save()
